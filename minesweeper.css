@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'menlo, skia;
 }
 
 body {
@@ -21,26 +21,26 @@ body {
 }
 
 .board {
-  display: flex;
-  flex-wrap: wrap;
+  display: flow-root;
+  flex-wrap: initial;
 }
 
 .board div {
   color: green;
   font-size: 2rem;
-  width: 75px;
-  height: 75px;
-  border: 1px #ccc dotted;
-  border-radius: 10%;
-  background-color: white;
-  margin: 3px;
-  display: flex;
+  width: 300x;
+  height: 300px;
+  border: 3px #ccc dotted;
+  border-radius: 30%%;
+  background-color: #6b4de8;
+  margin: 5px;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
 
 .board div:hover {
-  background-color: white;
+  background-color: #5d1054;
 }
 
 div.mine, div.mine:hover {
@@ -48,13 +48,13 @@ div.mine, div.mine:hover {
 }
 
 div.hidden {
-  background: #eee;
+  background: #91c09c;
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: #5da842;
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("images/mark.svg") #8de6db;
 }
