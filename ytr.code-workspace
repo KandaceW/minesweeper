@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "/Users/kandacewillcox/Downloads"
+		}
+	],
+	"settings": {
+		"vscode-janus-debug.uploadOnSave": [
+			"lib"
+		]
+	}
+}
