@@ -7,7 +7,8 @@
 	"settings": {
 		"vscode-janus-debug.uploadOnSave": [
 			"lib",
-			"tests"
+			"tests",
+			"lib.1"
 		]
 	}
 }
