@@ -1,19 +1,9 @@
-document.addEventListener('DOMContentLoaded', startGame);
-
-function addListeners(boardNode) {
-    for (var i = 0; i < boardNode.children.length; i++) {
-        boardNode.children[i].addEventListener('click', showCell)
-        boardNode.children[i].addEventListener('contextmenu', markCell)
-    }
-}
-
 // Define your `board` object here!
 var lib = {
     initBoard: initBoard,
     displayMessage: displayMessage,
     getSurroundingCells: getSurroundingCells
 }
-
 // Draw board based on number of cells and an assumption about how much
 // space should be allowed for each cell.
 
@@ -136,6 +126,20 @@ function drawBoard(boardNode) {
     }
 
 }
+document.addEventListener('DOMContentLoaded', startGame);
+
+function addListeners(boardNode) {
+    for (var i = 0; i < boardNode.children.length; i++) {
+        boardNode.children[i].addEventListener('click', showCell)
+        boardNode.children[i].addEventListener('contextmenu', markCell)
+    }
+}
+function displayMessage(msg, id) {
+    document.getElementById(id || 'message').innerHTML = '<p>' + msg + '</p>'
+}
+
+
+
 
 function cellCompare(a, b) {
     if (a.row < b.row) {
@@ -178,7 +182,34 @@ function markCell(evt) {
     cell.isMarked = cell.isMarked ? false : true
 }
 
+function getUpperBound(n) {
+    var limit = Math.sqrt(board.cells.length)
+    return n + 1 > limit ? limit : n + 1
+}
 
+function getLowerBound(n) {
+    return n - 1 < 0 ? 0 : n - 1
+}
+
+
+function getRow(element) {
+    return parseInt(getCoordinate(element, 'row'), 10)
+}
+
+function getCellIndex(row, col) {
+    var idx = null
+    board.cells.find(function (cell, i) {
+        if (cell.row === row && cell.col === col) {
+            idx = i
+            return true
+        }
+    })
+    return idx
+}
+// Convert classLists and HTMLCollections
+function makeArray(list) {
+    return [].slice.call(list)
+}
 function getRange(begin, end) {
     return Array.apply(begin, Array(end - begin + 1))
         .map(function (n, i) {
@@ -186,22 +217,12 @@ function getRange(begin, end) {
         })
 }
 
-function getLowerBound(n) {
-    return n - 1 < 0 ? 0 : n - 1
-}
 
-function getUpperBound(n) {
-    var limit = Math.sqrt(board.cells.length)
-    return n + 1 > limit ? limit : n + 1
-}
 
-function displayMessage(msg, id) {
-    document.getElementById(id || 'message').innerHTML = '<p>' + msg + '</p>'
-}
 
-function getRow(element) {
-    return parseInt(getCoordinate(element, 'row'), 10)
-}
+
+
+
 
 function getCol(element) {
     return parseInt(getCoordinate(element, 'col'), 10)
@@ -230,21 +251,9 @@ function removeListeners() {
     board.parentNode.replaceChild(clone, board)
 }
 
-// Convert classLists and HTMLCollections
-function makeArray(list) {
-    return [].slice.call(list)
-}
 
-function getCellIndex(row, col) {
-    var idx = null
-    board.cells.find(function (cell, i) {
-        if (cell.row === row && cell.col === col) {
-            idx = i
-            return true
-        }
-    })
-    return idx
-}
+
+
 
 function getNodeByCoordinates(row, col) {
     var rowClass = 'row-' + row
