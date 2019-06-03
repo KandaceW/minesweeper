@@ -1,4 +1,4 @@
-html, body {
+html {
   height: 100%;
   font-family: 'menlo, skia;
 }
@@ -9,41 +9,36 @@ body {
   justify-content: flex-center;
   flex-direction: column;
 }
-
-#message, #notes {
+#notes {
+  font-size: 1.5rem;
+}
+#message  {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-#message {
-  font-size: 1.5rem;
-}
-
-.board {
-  display: flow-root;
-  flex-wrap: initial;
-}
-
-.board div {
-  color: green;
-  font-size: 2rem;
-  width: 300x;
-  height: 300px;
-  border: 3px #ccc dotted;
-  border-radius: 30%%;
-  background-color: #6b4de8;
+  
+div.board  {
+ display: block;
+  flex-wrap: inherit;
+  color: rgb(3, 29, 32);
+  font-size: 15pt;
+  width: 50%;
+  height: 50%;
+  border: 3px, solid, rgba(216, 5, 103, 0.897);
+  border-radius: 50%;
+  background-color: #0cdfaa;
   margin: 5px;
   display: grid;
   align-items: center;
   justify-content: center;
 }
 
-.board div:hover {
+div.board.hover {
   background-color: #5d1054;
 }
 
-div.mine, div.mine:hover {
+div.mine {
   background: no-repeat center/60% url("images/bomb.svg") crimson;
 }
 
@@ -51,10 +46,11 @@ div.hidden {
   background: #91c09c;
 }
 
+
+
+div.marked:hover {
+  background: no-repeat center/60% url("images/mark.svg") #8de6db;
+}
 div.hidden:hover {
   background: #5da842;
-}
-
-div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") #8de6db;
 }
