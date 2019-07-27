@@ -84,7 +84,7 @@ function drawBoard(boardNode) {
             })
             .forEach(setInnerHTML)
     }
-    / For the given cell object, set innerHTML to cell.surroundingMines
+    // For the given cell object, set innerHTML to cell.surroundingMines
     // under the following conditions:
     //  - cell has not been marked by the user
     //  - surroundingMines is > 0
