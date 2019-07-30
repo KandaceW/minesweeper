@@ -71,7 +71,7 @@ function checkForWin() {
       winCount++;
     }
     if (winCount == board.cells.length) {
-      lib.displayMessage('You win!');
+      lib.displayMessage('You win but ur soba!');
     }
     // You can use this function call to declare a winner (once you've
     // detected that they've won, that is!)
