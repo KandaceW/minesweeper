@@ -5,9 +5,9 @@ html, body {
   
 body {
   display: flex;
+  background: cover;
   background-image: url("photo-1500462918059-b1a0cb512f1d.png");
   background-repeat: no-repeat;
-  margin: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
