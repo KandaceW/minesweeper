@@ -44,17 +44,17 @@ body {
 }
 
 div.mine, div.mine:hover {
-  background: no-repeat center/60% url("https://cdn.pixabay.com/photo/2016/09/24/09/20/icon-1691337__340.png");
+  background: no-repeat center/60% url("https://cdn.pixabay.com/photo/2016/09/24/09/20/icon-1691337__340.png") goldenrod;
 }
 
 div.hidden {
-  background: #eee;
+  background: #ada;
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: #cad;
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmt6kaY2pgirslHbrinBjpy0IfykV4V5ERfeO0GkcL1djPbZbN") deepskyblue;
 }
