@@ -6,7 +6,7 @@ html, body {
 body {
   display: flex;
   background-image: cover;
-  background-image: url("photo-1500462918059-b1a0cb512f1d.png");
+  background-image: url("https://images.unsplash.com/photo-1532765488483-62ff440ee4fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2467&q=80");
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
