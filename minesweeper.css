@@ -7,6 +7,7 @@ body {
   display: flex;
   background-image: url("photo-1500462918059-b1a0cb512f1d.png");
   background-position: cover;
+  background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
   flex-direction: column;
