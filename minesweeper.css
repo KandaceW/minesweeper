@@ -1,6 +1,6 @@
-html, body {
+html {
   height: 100%;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'menlo, skia;
 }
 
 body {
@@ -9,52 +9,48 @@ body {
   justify-content: flex-center;
   flex-direction: column;
 }
-
-#message, #notes {
+#notes {
+  font-size: 1.5rem;
+}
+#message  {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-#message {
-  font-size: 1.5rem;
-}
-
-.board {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.board div {
-  color: green;
-  font-size: 2rem;
-  width: 75px;
-  height: 75px;
-  border: 1px #ccc dotted;
-  border-radius: 10%;
-  background-color: white;
-  margin: 3px;
-  display: flex;
+  
+div.board  {
+ display: block;
+  flex-wrap: inherit;
+  color: rgb(3, 29, 32);
+  font-size: 15pt;
+  width: 50%;
+  height: 50%;
+  border: 3px, solid, rgba(216, 5, 103, 0.897);
+  border-radius: 50%;
+  background-color: #0cdfaa;
+  margin: 5px;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
 
-.board div:hover {
-  background-color: white;
+div.board.hover {
+  background-color: #5d1054;
 }
 
-div.mine, div.mine:hover {
-  background: no-repeat center/60% url("2wCEAAkGBxISEBUQExAVFRUQGBUVFRUQFRYVFRcVFRYXFxUVFRUYHSggGBolGxYVITEhJSorLi4uFyEzODMtNygtLisBCgoKDg0OGxAQGi0iICYtLTgtLy8wLTUtLS0yLS0wLy0tMC0tLS0vLS0vKzAtLS0tLS0tLS0tLS0tMC0tLS0tLf") crimson;
+div.mine {
+  background: no-repeat center/60% url("https://cdn.pixabay.com/photo/2016/09/24/09/20/icon-1691337__340.png") crimson;
 }
 
 div.hidden {
-  background: #eee;
+  background: #91c09c;
 }
 
+
+
+div.marked:hover {
+  background: no-repeat center/60% url("images/mark.svg") #8de6db;
+}
 div.hidden:hover {
-  background: #ccc;
-}
-
-div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: #5da842;
 }
