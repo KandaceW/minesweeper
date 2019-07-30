@@ -1,11 +1,12 @@
 html, body {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
-  background-image: url=("https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
 }
-
+  
 body {
   display: flex;
+  background-image: url("photo-1500462918059-b1a0cb512f1d.png");
+
   align-items: center;
   justify-content: center;
   flex-direction: column;
