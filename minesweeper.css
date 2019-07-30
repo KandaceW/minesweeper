@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("https://www.irishtimes.com/polopoly_fs/1.2154908.1427399800!/image/image.jpg_gen/derivatives/box_620_330/image.jpg");
 }
 
 body {
