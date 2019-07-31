@@ -72,11 +72,17 @@ h1 {
   font-display: space-around, .5em;
   font-style: italic, black, 2px;
   padding: 4px, rgba(22, 4, 104, 0.178), 2px;
+  text-align: center;
 }
 
 p {
   color: darkorange;
   font-size: 30px;
   font-variation-settings: bolder;
-  padding: 3px, rgba(22, 4, 104, 0.178), 2px;
+  padding: 5px, rgba(22, 4, 104, 0.178), 2px;
+  text-align: center;
+}
+h3 {
+  color: lime;
+  padding: black, 2px;
 }
