@@ -10,6 +10,8 @@ body {
   background-image: cover;
   align-items: center;
   justify-content: center;
+  text-align: center;
+
 }
 
 #message,
@@ -25,7 +27,7 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 29px;
+  margin: auto;
 }
 
 .board div {
