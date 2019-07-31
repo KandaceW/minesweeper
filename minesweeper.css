@@ -83,6 +83,9 @@ p {
   text-align: center;
 }
 h3 {
-  color: lime;
-  padding: black, 2px;
+  color: #00ff004d;
+ 
 }
+h2{
+  color:#f80375;
+};
