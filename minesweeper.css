@@ -1,24 +1,19 @@
-html, body {
+html,
+body {
   box-sizing: border-box;
   flex-direction: column;
-  margin: 100%;
   font-family: 'Open Sans', sans-serif;
 }
-  
+
 body {
-  position: relative;
   background-image: url("https://images.unsplash.com/photo-1532765488483-62ff440ee4fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2467&q=80");
-  background-repeat: repeat;
   background-image: cover;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: goldenrod;
-  text-shadow: darkorange, 2pt, outset;
 }
 
-#message, #notes {
-  display: flex;
+#message,
+#notes {
   flex-direction: column;
   align-items: center;
 }
@@ -40,7 +35,7 @@ body {
   border: 1px #ccc dotted;
   border-radius: 10%;
   background-color: turquoise;
-  margin: 3px;
+  margin-left: 29px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,8 +45,9 @@ body {
   background-color: darkgreen;
 }
 
-div.mine, div.mine:hover {
-  background: no-repeat center/60% url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmt6kaY2pgirslHbrinBjpy0IfykV4V5ERfeO0GkcL1djPbZbN") goldenrod;
+div.mine,
+div.mine:hover {
+  background: no-repeat center/60% url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJdpqJm8Ft8YLQhM9d4CkcaTJYNwv2_Wijlupg4a7cFZqWFaRqrQ") goldenrod;
 }
 
 div.hidden {
@@ -59,9 +55,27 @@ div.hidden {
 }
 
 div.hidden:hover {
-  background: #cad;
+  background: url("https://lh3.googleusercontent.com/A_5IC3bINxbe7V4TcwZGz8OqUenxPM5HCJs8B9QJhdeAwfXJNO-opR5BAxFpM1DJRYU");
+  
 }
 
-div.marked, div.marked:hover {
-  background: no-repeat center/60% url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmt6kaY2pgirslHbrinBjpy0IfykV4V5ERfeO0GkcL1djPbZbN") deepskyblue;
+div.marked,
+div.marked:hover {
+  background: #cad;
+  background: url("https://lh3.googleusercontent.com/A_5IC3bINxbe7V4TcwZGz8OqUenxPM5HCJs8B9QJhdeAwfXJNO-opR5BAxFpM1DJRYU");
+}
+
+h1 {
+  color: goldenrod;
+  font-size: 45px;
+  font-display: space-around, .5em;
+  font-style: italic, black, 2px;
+  padding: 4px, rgba(22, 4, 104, 0.178), 2px;
+}
+
+p {
+  color: darkorange;
+  font-size: 30px;
+  font-variation-settings: bolder;
+  padding: 3px, rgba(22, 4, 104, 0.178), 2px;
 }

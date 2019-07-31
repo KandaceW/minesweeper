@@ -4,32 +4,157 @@ document.addEventListener('contextmenu', checkForWin)
 
 // Define your `board` object here!
 var board = {
-  cells: [
-    { row: 0, col: 0, isMine: false, hidden: true, },
-    { row: 0, col: 1, isMine: false, hidden: true, },
-    { row: 0, col: 2, isMine: false, hidden: true, },
-    { row: 0, col: 3, isMine: false, hidden: true, },
-    { row: 0, col: 4, isMine: false, hidden: true, },
-    { row: 1, col: 0, isMine: false, hidden: true, },
-    { row: 1, col: 1, isMine: false, hidden: true, },
-    { row: 1, col: 2, isMine: false, hidden: true, },
-    { row: 1, col: 3, isMine: false, hidden: true, },
-    { row: 1, col: 4, isMine: false, hidden: true, },
-    { row: 2, col: 0, isMine: false, hidden: true, },
-    { row: 2, col: 1, isMine: false, hidden: true, },
-    { row: 2, col: 2, isMine: false, hidden: true, },
-    { row: 2, col: 3, isMine: false, hidden: true, },
-    { row: 2, col: 4, isMine: false, hidden: true, },
-    { row: 3, col: 0, isMine: false, hidden: true, },
-    { row: 3, col: 1, isMine: false, hidden: true, },
-    { row: 3, col: 2, isMine: false, hidden: true, },
-    { row: 3, col: 3, isMine: false, hidden: true, },
-    { row: 3, col: 4, isMine: false, hidden: true, },
-    { row: 4, col: 0, isMine: false, hidden: true, },
-    { row: 4, col: 1, isMine: false, hidden: true, },
-    { row: 4, col: 2, isMine: false, hidden: true, },
-    { row: 4, col: 3, isMine: false, hidden: true, },
-    { row: 4, col: 4, isMine: false, hidden: true, },],
+  cells: [{
+      row: 0,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+  ],
 };
 
 
@@ -54,6 +179,7 @@ function setBoard() {
     randIndex = getRandomInt(0, board.cells.length);
   }
 }
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -100,4 +226,3 @@ function countSurroundingMines(cell) {
   }
   return count;
 }
-
