@@ -1,262 +1,228 @@
+document.addEventListener('DOMContentLoaded', startGame)
+document.addEventListener('click', checkForWin)
+document.addEventListener('contextmenu', checkForWin)
+
 // Define your `board` object here!
-var lib = {
-    initBoard: initBoard,
-    displayMessage: displayMessage,
-    getSurroundingCells: getSurroundingCells
+var board = {
+  cells: [{
+      row: 0,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 0,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 1,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 2,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 3,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 0,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 1,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 2,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 3,
+      isMine: false,
+      hidden: true,
+    },
+    {
+      row: 4,
+      col: 4,
+      isMine: false,
+      hidden: true,
+    },
+  ],
+};
+
+
+function startGame() {
+  // Don't remove this function call: it makes the game work!
+  setBoard();
+  for (var i = 0; i < board.cells.length; i++) {
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+  }
+  lib.initBoard()
 }
-// Draw board based on number of cells and an assumption about how much
-// space should be allowed for each cell.
 
-function drawBoard(boardNode) {
-    boardNode.style.width = Math.sqrt(board.cells.length) * 85 + 'px'
-    board.cells.reduce(cellsToNodes, boardNode)
-
-    function initBoard() {
-        if (!tests.boardValid() || !tests.cellsValid()) {
-            displayMessage("Let's play!")
-        }
-        displayMessage
-        board.cells.sort(cellCompare)
-        var boardNode = document.getElementsByClassName('board')[0]
-        drawBoard(boardNode)
-        addListeners(boardNode)
-        return true
+function setBoard() {
+  var mines = 5;
+  var mineCount = 0;
+  var randIndex = getRandomInt(0, board.cells.length);
+  while (mineCount < mines) {
+    if (board.cells[randIndex].isMine != true) {
+      board.cells[randIndex].isMine = true;
+      mineCount++;
     }
+    randIndex = getRandomInt(0, board.cells.length);
+  }
+}
 
-    // Array.includes polyfill
-    if (!Array.prototype.includes) {
-        Array.prototype.includes = function (searchElement /*, fromIndex*/) {
-            'use strict'
-            var O = Object(this)
-            var len = parseInt(O.length, 10) || 0
-            if (len === 0) {
-                return false
-            }
-            var n = parseInt(arguments[1], 10) || 0
-            var k
-            if (n >= 0) {
-                k = n
-            } else {
-                k = len + n
-                if (k < 0) {
-                    k = 0
-                }
-            }
-            var currentElement
-            while (k < len) {
-                currentElement = O[k]
-                if (searchElement === currentElement) { // NaN !== NaN
-                    return true
-                }
-                k++
-            }
-            return false
-        }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// Define this function to look for a win condition:
+//
+// 1. Are all of the cells that are NOT mines visible?
+// 2. Are all of the mines marked?
+function checkForWin() {
+  var winCount = 0;
+  for (var i = 0; i < board.cells.length; i++) {
+    if (board.cells[i].isMine && board.cells[i].isMarked || board.cells[i].isMine == false && board.cells[i].hidden == false) {
+      winCount++;
     }
-
-    // Returns a subset of the `cells` array, including only those cells
-    // which are adjacent to `row`, `col`
-    function getSurroundingCells(row, col) {
-        var columns = getRange(getLowerBound(col), getUpperBound(col))
-        var rows = getRange(getLowerBound(row), getUpperBound(row))
-        return result = board.cells
-            .filter(function (cell) {
-                // Filter out the current cell
-                if (cell.row === row && cell.col === col) {
-                    return false
-                }
-                // Grab the rest of the adjacent cells
-                return columns.includes(cell.col) && rows.includes(cell.row)
-            })
+    if (winCount == board.cells.length) {
+      lib.displayMessage('You win but ur soba!');
     }
-    // For the given DOM element, displays surrounding mine counts
-    // under the following conditions:
-    //  - cell is not a mine
-    //  - cell has not already been checked
-    function showSurrounding(element) {
-        getSurroundingCells(getRow(element), getCol(element))
-            .filter(function (cell) {
-                return !cell.isMine && !cell.isMarked
-            })
-            .filter(function (cell) {
-                // Avoid breaking the call stack with recurrent checks on same cell
-                return !cell.isProcessed
-            })
-            .forEach(setInnerHTML)
+    // You can use this function call to declare a winner (once you've
+    // detected that they've won, that is!)
+    //   lib.displayMessage('You win!')
+  }
+
+  console.log(winCount);
+}
+
+
+// Define this function to count the number of mines around the cell
+// (there could be as many as 8). You don't have to get the surrounding
+// cells yourself! Just use `lib.getSurroundingCells`: 
+//
+//   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
+//
+// It will return cell objects in an array. You should loop through 
+// them, counting the number of times `cell.isMine` is true.
+function countSurroundingMines(cell) {
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col);
+  var count = 0;
+  for (var i = 0; i < surrounding.length; i++) {
+    if (surrounding[i].isMine) {
+      count++;
     }
-    / For the given cell object, set innerHTML to cell.surroundingMines
-    // under the following conditions:
-    //  - cell has not been marked by the user
-    //  - surroundingMines is > 0
-    // If surroundingMines is 0, greedily attempt to expose as many more cells
-    // as possible.
-    function setInnerHTML(cell) {
-        cell.isProcessed = true
-        var element = getNodeByCoordinates(cell.row, cell.col)
-        if (element.innerHTML !== '') {
-            return
-        }
-        element.innerHTML = cell.surroundingMines > 0 ?
-            cell.surroundingMines : ''
-        if (element.classList.contains('hidden')) {
-            cell.hidden = false
-            element.classList.remove('hidden')
-            if (cell.surroundingMines === 0) {
-                return showSurrounding(element)
-            }
-        }
-    }
-
-    function cellsToNodes(boardNode, cell) {
-        var node = document.createElement('div')
-        node.classList.add('row-' + cell.row)
-        node.classList.add('col-' + cell.col)
-        if (cell.isMine) {
-            node.classList.add('mine')
-        }
-        if (cell.hidden) {
-            node.classList.add('hidden')
-        } else {
-            if (cell.surroundingMines && !cell.isMine) {
-                node.innerHTML = cell.surroundingMines
-            }
-        }
-        boardNode.appendChild(node)
-        return boardNode
-    }
-
-}
-document.addEventListener('DOMContentLoaded', startGame);
-
-function addListeners(boardNode) {
-    for (var i = 0; i < boardNode.children.length; i++) {
-        boardNode.children[i].addEventListener('click', showCell)
-        boardNode.children[i].addEventListener('contextmenu', markCell)
-    }
-}
-function displayMessage(msg, id) {
-    document.getElementById(id || 'message').innerHTML = '<p>' + msg + '</p>'
-}
-
-
-
-
-function cellCompare(a, b) {
-    if (a.row < b.row) {
-        return -1
-    } else if (a.row > b.row) {
-        return 1
-    }
-    if (a.col < b.col) {
-        return -1
-    } else if (a.col > b.col) {
-        return 1
-    }
-    return 0
-}
-
-function showCell(evt) {
-    var idx = getCellIndex(getRow(evt.target), getCol(evt.target))
-    var cell = board.cells[idx]
-    cell.hidden = false
-    cell.isMarked = false
-    evt.target.classList.remove('hidden')
-    evt.target.classList.remove('marked')
-    if (evt.target.classList.contains('mine')) {
-        displayMessage('BOOM!')
-        revealMines()
-        removeListeners()
-        return
-    }
-    setInnerHTML(cell)
-    if (cell.surroundingMines === 0) {
-        showSurrounding(evt.target)
-    }
-}
-
-function markCell(evt) {
-    evt.preventDefault()
-    evt.target.classList.toggle('marked')
-    var idx = getCellIndex(getRow(evt.target), getCol(evt.target))
-    var cell = board.cells[idx]
-    cell.isMarked = cell.isMarked ? false : true
-}
-
-function getUpperBound(n) {
-    var limit = Math.sqrt(board.cells.length)
-    return n + 1 > limit ? limit : n + 1
-}
-
-function getLowerBound(n) {
-    return n - 1 < 0 ? 0 : n - 1
-}
-
-
-function getRow(element) {
-    return parseInt(getCoordinate(element, 'row'), 10)
-}
-
-function getCellIndex(row, col) {
-    var idx = null
-    board.cells.find(function (cell, i) {
-        if (cell.row === row && cell.col === col) {
-            idx = i
-            return true
-        }
-    })
-    return idx
-}
-// Convert classLists and HTMLCollections
-function makeArray(list) {
-    return [].slice.call(list)
-}
-function getRange(begin, end) {
-    return Array.apply(begin, Array(end - begin + 1))
-        .map(function (n, i) {
-            return begin + i
-        })
-}
-
-
-
-
-
-
-
-
-function getCol(element) {
-    return parseInt(getCoordinate(element, 'col'), 10)
-}
-
-function getCoordinate(element, coordinate) {
-    return makeArray(element.classList)
-        .find(function (cssClass) {
-            return cssClass.substring(0, coordinate.length) === coordinate
-        })
-        .split('-')[1]
-}
-
-function revealMines() {
-    makeArray(document.getElementsByClassName('mine'))
-        .forEach(function (element) {
-            element.classList.remove('hidden')
-            element.classList.remove('marked')
-        })
-}
-
-// Cloning removes event listeners
-function removeListeners() {
-    var board = document.getElementsByClassName('board')[0]
-    var clone = board.cloneNode(true)
-    board.parentNode.replaceChild(clone, board)
-}
-
-
-
-
-
-function getNodeByCoordinates(row, col) {
-    var rowClass = 'row-' + row
-    var colClass = 'col-' + col
-    return document.getElementsByClassName(rowClass + ' ' + colClass)[0]
+  }
+  return count;
 }

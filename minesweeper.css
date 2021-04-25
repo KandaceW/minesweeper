@@ -1,56 +1,93 @@
-html {
-  height: 100%;
-  font-family: 'menlo, skia;
+html,
+body {
+  box-sizing: border-box;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
-  display: flex;
+  background-image: url("https://images.unsplash.com/photo-1532765488483-62ff440ee4fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2467&q=80");
+  background-image: cover;
   align-items: center;
-  justify-content: flex-center;
-  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
 }
+
+#message,
 #notes {
+  flex-direction: column;
+  align-items: center;
+}
+
+#message {
   font-size: 1.5rem;
 }
-#message  {
+
+.board {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
 }
-  
-div.board  {
- display: block;
-  flex-wrap: inherit;
-  color: rgb(3, 29, 32);
-  font-size: 15pt;
-  width: 50%;
-  height: 50%;
-  border: 3px, solid, rgba(216, 5, 103, 0.897);
-  border-radius: 50%;
-  background-color: #0cdfaa;
-  margin: 5px;
-  display: grid;
+
+.board div {
+  color: green;
+  font-size: 2rem;
+  width: 75px;
+  height: 75px;
+  border: 1px #ccc dotted;
+  border-radius: 10%;
+  background-color: turquoise;
+  margin: 3px;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-div.board.hover {
-  background-color: #5d1054;
+.board div:hover {
+  background-color: darkgreen;
 }
 
-div.mine {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+div.mine,
+div.mine:hover {
+  background: no-repeat center/60% url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmt6kaY2pgirslHbrinBjpy0IfykV4V5ERfeO0GkcL1djPbZbN") goldenrod;
 }
 
 div.hidden {
-  background: #91c09c;
+  background: #ada;
 }
 
-
-
-div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") #8de6db;
-}
 div.hidden:hover {
-  background: #5da842;
+  background: url("https://lh3.googleusercontent.com/A_5IC3bINxbe7V4TcwZGz8OqUenxPM5HCJs8B9QJhdeAwfXJNO-opR5BAxFpM1DJRYU");
+  
 }
+
+div.marked,
+div.marked:hover {
+  background: #cad;
+  background: url("https://lh3.googleusercontent.com/A_5IC3bINxbe7V4TcwZGz8OqUenxPM5HCJs8B9QJhdeAwfXJNO-opR5BAxFpM1DJRYU");
+}
+
+h1 {
+  color: goldenrod;
+  font-size: 45px;
+  font-display: space-around, .5em;
+  font-style: italic, black, 2px;
+  padding: 4px, rgba(22, 4, 104, 0.178), 2px;
+  text-align: center;
+}
+
+p {
+  color: darkorange;
+  font-size: 30px;
+  font-variation-settings: bolder;
+  padding: 5px, rgba(22, 4, 104, 0.178), 2px;
+  text-align: center;
+}
+h3 {
+  color: #00ff004d;
+ 
+}
+h2{
+  color:#f80375;
+};
